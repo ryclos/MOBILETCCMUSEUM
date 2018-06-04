@@ -52,13 +52,14 @@ export class HomePage {
     /* this.db.executeSql('DROP TABLE `oeuvre` ', {}); */
     this.db.executeSql('CREATE TABLE IF NOT EXISTS `oeuvre` ( `id` INTEGER NOT NULL PRIMARY KEY, `lastname` TEXT, `firstname` TEXT, `qrcode` INTEGER, `checked` INTEGER )', {})
     .then((table) => {
-      if (table.rows.length <= 21) {
-        this.GetInfos();
+      if (table.rows.length == 21) {
+        
       
         console.log('Table créée')
         this.saveDataBase();
         
       }
+      this.GetInfos();
     })
     .catch(e => console.log('La table ne s\'est pas créée', e));
 
@@ -94,7 +95,6 @@ export class HomePage {
   }
 
 public GetInfos() {
-  console.log('getinfo');
   this.db.executeSql('select * from `oeuvre`', {})
   .then((data)=>{
     this.total = data.rows.length;//Afficher le nombre d'oeuvres total
@@ -105,7 +105,6 @@ public GetInfos() {
 
     if(data.rows){
       if(data.rows.length > 0) {
-        console.log('longueur : ', data.rows.length);
         for(var i=0; i<data.rows.length; i++){
             this.event.push(data.rows.item(i));            
           }

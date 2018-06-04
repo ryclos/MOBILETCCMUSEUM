@@ -1,6 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler, NavController, NavParams } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { SQLite } from '@ionic-native/sqlite';
 import { InAppBrowser } from "@ionic-native/in-app-browser";
@@ -10,12 +10,12 @@ import { AboutPage } from '../pages/about/about';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { WelcomePage } from "../pages/welcome/welcome";
-//import { ScanPage } from "../pages/scan/scan";
 
 //fonctionnalitees
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { importDeclaration } from 'babel-types';
 
 
 @NgModule({
@@ -24,8 +24,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     AboutPage,
     HomePage,
     WelcomePage,
-    TabsPage,
-    //ScanPage
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -37,8 +36,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     AboutPage,
     HomePage,
     WelcomePage,
-    TabsPage,
-    //ScanPage
+    TabsPage
   ],
   providers: [
     StatusBar,
